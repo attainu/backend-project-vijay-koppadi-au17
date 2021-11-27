@@ -1,0 +1,17 @@
+<div class="container col-md-10 text-center form">
+    <div class="page-header">
+        <h3>Add new Student</h3>
+    </div>
+    <form name="studentForm" ng-submit="studentCtrl.addNewStudent(studentCtrl.studentData)" novalidate>
+        <div class="form-group">
+            <label for="name">Name </label>
+            <input type="text" class="form-control" name="name" placeholder="Student Name" ng-model="studentCtrl.studentData.name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Enter Email" ng-model="studentCtrl.studentData.email" required>
+        </div>
+        <button type="submit" class="button btn-primary">Submit</button>
+        <div ng-if="studentCtrl.added==true">{{ studentCtrl.successMsg }}</div>
+    </form>
+</div>

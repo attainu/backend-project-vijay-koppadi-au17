@@ -1,0 +1,41 @@
+<div class="container col-md-4 text-center form">
+    <div class="page-header">
+        <h3>Administrators Login</h3>
+    </div>
+    <form ng-submit="main.loginUser(loginData);">
+        <div class="form-group row">
+            <label class="col-form-label col-md-4" for="username">Username</label>
+            <div class="col-md">
+                <input type="text" class="form-control" autocomplete="username" id="username" placeholder="Enter Username" ng-model="main.loginData.username">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-md-4" for="userpassword">Password</label>
+            <div class="col-md">
+                <input type="password" class="form-control" autocomplete="current-password" id="userpassword" placeholder="Enter Password" ng-model="main.loginData.password">
+            </div> 
+        </div>
+        <div class="form-group row grouped-buttons">
+            <button type="submit" class="button btn-primary">Sign in</button>&nbsp;
+            <button type="button" class="button btn-fb" ng-click="main.fb()"><i class="fa fa-facebook-square"></i> login</button>
+            <button type="button" class="button btn-info" ng-click="main.triggerModal('reset')">Reset Username/Password</button>
+        </div>
+    </form>
+    <div class="feedback">
+        <div class="jumbotron text-center" ng-show="main.loading">
+            <span class="glyphicon glypicon-repeat spinner"></span>
+            <p>loading...</p>
+
+            </div>
+            <div class="row show-hide-message" ng-show="main.successMsg">
+                <div class="alert alert-success">{{main.successMsg}}</div>
+            </div>
+            <div class="row show-hide-message" ng-show="main.errorMsg">
+                <div class="alert alert-danger">{{main.errorMsg}}</div>
+            </div>
+            <div class="row show-hide-message" ng-show="fb.errorMsg">
+                <div class="alert alert-danger">{{fb.errorMsg}}</div>
+            </div>
+        </div>
+    </div>
+</div>

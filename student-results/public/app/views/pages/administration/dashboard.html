@@ -1,0 +1,68 @@
+<div class="row dashboard">
+    <div class="nav-side-menu">
+        <div class="brand">Dashboard</div>
+        
+        <div class="menu-list text-center">
+                <li  data-toggle="collapse" data-target="#admin-services" class="collapsed" ui-sref-active = "active">
+                    <a href="#">Administrative Services </a>
+                </li>
+                    <ul class="sub-menu collapse text-center" id="admin-services">
+                        <li ui-sref-active = "active"><a ui-sref="app.dashboard.addnewclass" >Add New Course</a></li>
+                        <li ui-sref-active = "active"><a ui-sref="app.dashboard.enrollstudents" >Enroll Student</a></li>
+                        <li ui-sref-active = "active"><a ui-sref="app.dashboard.addnewstudent" >Register Student</a></li>
+                    </ul>
+                <li data-toggle="collapse" data-target="#academic-service" class="collapsed" ui-sref-active = "active">
+                    <a href="#">Academic Services </a>
+                </li>  
+                <ul class="sub-menu collapse text-center" id="academic-service">
+                    <li ui-sref-active = "active"><a ui-sref="app.dashboard.updtstudentrec"> Update Student Record</a></li>
+                    <li ui-sref-active = "active"><a ui-sref="app.dashboard.updatecourse">Edit Courses</a></li>
+                    <li ui-sref-active = "active"><a ui-sref="app.dashboard.marks">Add Student Marks</a></li>
+                </ul>
+        </div>
+    </div>
+    <div id="dash-content" class="panel panel-info text-center">
+        <div class="row charts text-center">
+            <div class="col-md-3 float-left">
+                    <!-- <canvas  class="chart chart-doughnut" chart-data="dash.aggClassrooms" chart-labels="dash.aggClassrooms.code" data-ng-init="dash.fitChartContainer()"></canvas>  -->
+                <table class="custom-table">
+                    <thead>
+                        <td>Course Code</td>
+                        <td>Students</td>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="classroom in dash.aggClassrooms">
+                            <td>{{ classroom.code }}</td>
+                            <td>{{ classroom.enrolled }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3" data-ng-init="dash.loadCharts()">
+                <h5>Class enrollment</h5>
+                <div id="second-chart-parent">
+                    <canvas id="classrooms-chart" class="chart chart-doughnut" chart-data="dash.data" chart-labels="dash.labels" data-ng-init="dash.fitChartContainer()"></canvas> 
+
+                </div>
+            </div>
+            <div class="col-md-3 float-right">
+                <div class="average-container text-center">
+                    <h4><strong>{{ dash.ave | number:2 }}</strong></h4>
+                    <h5><strong>Ave</strong></h5>
+                </div>
+                <div class="rank-container row">
+                    <div ng-repeat = "student in dash.studentMarks|limitTo:3" class="col">
+                        <p style="color: black; font-size:0.65rem"><strong>{{ student.name }}</strong></p>
+                        <p style="color: black; font-size:0.65rem"><strong>{{ student.final | number: 2 }}</strong></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <div class="span12 ui-view-container">
+                <div ui-view="dashview" class="animate animated slideInLeft" ></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
